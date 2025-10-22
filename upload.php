@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
 
     // 2. Controlla se il file esiste già
     if (file_exists($target_file)) {
-        echo "Spiacente, il file esiste già.";
+        echo "Spiacente, il file esiste già. Cambia il nome del file prima di inviarlo.";
         $uploadOk = 0;
     }
 
