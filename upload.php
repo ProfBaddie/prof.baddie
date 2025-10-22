@@ -1,6 +1,6 @@
 <?php
 // Imposta la directory di destinazione
-$target_dir = "mainb/uploads/"; // Assicurati che questa cartella esista e abbia permessi di scrittura (ad es. chmod 777)
+$target_dir = "main/uploads/"; // Assicurati che questa cartella esista e abbia permessi di scrittura (ad es. chmod 777)
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
