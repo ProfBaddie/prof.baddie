@@ -3,25 +3,28 @@
 $target_dir = "uploads/"; // Assicurati che questa cartella esista e abbia permessi di scrittura (ad es. chmod 777)
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
+$FileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 // Controlla se il form è stato inviato
+
 if (isset($_POST["submit"])) {
+     // 1. Controlla il tipo di file
+    $check = getfilesize($_FILES["fileToUpload"]["tmp_name"]);
+    }
 
     // 2. Controlla se il file esiste già
     if (file_exists($target_file)) {
-        echo "Spiacente, il file esiste già.";
+        echo "Spiacente, il file esiste già. Rinomina il file prima di caricarlo";
         $uploadOk = 0;
     }
 
     // 3. Limita la dimensione del file (ad es. 500 KB)
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 1073741824) {
         echo "Spiacente, il tuo file è troppo grande.";
         $uploadOk = 0;
     }
 
     // 4. Limita i tipi di file
-    if ($imageFileType = "exe" or $imageFileType = "msi") {
+    if ($FileType = "exe" or $FileType = "msi") {
         echo "Spiacente, non sono permessi file eseguibili.";
         $uploadOk = 0;
     }
